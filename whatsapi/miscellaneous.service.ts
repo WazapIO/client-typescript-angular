@@ -101,15 +101,15 @@ export class MiscellaneousService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public getProfilePic(instanceKey: string, jid: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public getProfilePic(instanceKey: string, jid: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public getProfilePic(instanceKey: string, jid: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public getProfilePic(instanceKey: string, jid: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyMiscProfilePicGet.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling getProfilePic.');
         }
         if (jid === null || jid === undefined) {
-            throw new Error('Required parameter jid was null or undefined when calling instancesInstanceKeyMiscProfilePicGet.');
+            throw new Error('Required parameter jid was null or undefined when calling getProfilePic.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -178,15 +178,15 @@ export class MiscellaneousService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public getUsersInfo(instanceKey: string, data: UserInfoPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public getUsersInfo(instanceKey: string, data: UserInfoPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public getUsersInfo(instanceKey: string, data: UserInfoPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public getUsersInfo(instanceKey: string, data: UserInfoPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyMiscUserInfoPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling getUsersInfo.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeyMiscUserInfoPost.');
+            throw new Error('Required parameter data was null or undefined when calling getUsersInfo.');
         }
 
         let localVarHeaders = this.defaultHeaders;

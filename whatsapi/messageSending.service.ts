@@ -27,29 +27,29 @@ import { ButtonMessageWithMediaPayload } from '../models/buttonMessageWithMediaP
 // @ts-ignore
 import { ContactMessagePayload } from '../models/contactMessagePayload';
 // @ts-ignore
-import { InstancesInstanceKeySendAudioPostRequest } from '../models/instancesInstanceKeySendAudioPostRequest';
-// @ts-ignore
-import { InstancesInstanceKeySendDocumentPostRequest } from '../models/instancesInstanceKeySendDocumentPostRequest';
-// @ts-ignore
-import { InstancesInstanceKeySendImagePostRequest } from '../models/instancesInstanceKeySendImagePostRequest';
-// @ts-ignore
-import { InstancesInstanceKeySendUploadPostRequest } from '../models/instancesInstanceKeySendUploadPostRequest';
-// @ts-ignore
-import { InstancesInstanceKeySendVideoPostRequest } from '../models/instancesInstanceKeySendVideoPostRequest';
-// @ts-ignore
 import { ListMessagePayload } from '../models/listMessagePayload';
 // @ts-ignore
 import { LocationMessagePayload } from '../models/locationMessagePayload';
 // @ts-ignore
 import { PollMessagePayload } from '../models/pollMessagePayload';
 // @ts-ignore
+import { SendAudioRequest } from '../models/sendAudioRequest';
+// @ts-ignore
+import { SendDocumentRequest } from '../models/sendDocumentRequest';
+// @ts-ignore
+import { SendImageRequest } from '../models/sendImageRequest';
+// @ts-ignore
 import { SendMediaPayload } from '../models/sendMediaPayload';
+// @ts-ignore
+import { SendVideoRequest } from '../models/sendVideoRequest';
 // @ts-ignore
 import { TemplateButtonPayload } from '../models/templateButtonPayload';
 // @ts-ignore
 import { TemplateButtonWithMediaPayload } from '../models/templateButtonWithMediaPayload';
 // @ts-ignore
 import { TextMessage } from '../models/textMessage';
+// @ts-ignore
+import { UploadMediaRequest } from '../models/uploadMediaRequest';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -126,23 +126,23 @@ export class MessageSendingService {
      * Sends a audio message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param instanceKey Instance key
      * @param to The recipient\&#39;s number
-     * @param instancesInstanceKeySendAudioPostRequest 
+     * @param sendAudioRequest 
      * @param caption Attached caption
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendAudioPost(instanceKey: string, to: string, instancesInstanceKeySendAudioPostRequest: InstancesInstanceKeySendAudioPostRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendAudioPost(instanceKey: string, to: string, instancesInstanceKeySendAudioPostRequest: InstancesInstanceKeySendAudioPostRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendAudioPost(instanceKey: string, to: string, instancesInstanceKeySendAudioPostRequest: InstancesInstanceKeySendAudioPostRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendAudioPost(instanceKey: string, to: string, instancesInstanceKeySendAudioPostRequest: InstancesInstanceKeySendAudioPostRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendAudio(instanceKey: string, to: string, sendAudioRequest: SendAudioRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendAudio(instanceKey: string, to: string, sendAudioRequest: SendAudioRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendAudio(instanceKey: string, to: string, sendAudioRequest: SendAudioRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendAudio(instanceKey: string, to: string, sendAudioRequest: SendAudioRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendAudioPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendAudio.');
         }
         if (to === null || to === undefined) {
-            throw new Error('Required parameter to was null or undefined when calling instancesInstanceKeySendAudioPost.');
+            throw new Error('Required parameter to was null or undefined when calling sendAudio.');
         }
-        if (instancesInstanceKeySendAudioPostRequest === null || instancesInstanceKeySendAudioPostRequest === undefined) {
-            throw new Error('Required parameter instancesInstanceKeySendAudioPostRequest was null or undefined when calling instancesInstanceKeySendAudioPost.');
+        if (sendAudioRequest === null || sendAudioRequest === undefined) {
+            throw new Error('Required parameter sendAudioRequest was null or undefined when calling sendAudio.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -206,88 +206,8 @@ export class MessageSendingService {
         return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: instancesInstanceKeySendAudioPostRequest,
+                body: sendAudioRequest,
                 params: localVarQueryParameters,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Send a button message with a media header.
-     * Sends an interactive button message to the given user. This message also has media header with it. Make sure that all the button ids are unique
-     * @param instanceKey Instance key
-     * @param data Message data
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public instancesInstanceKeySendButtonMediaPost(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendButtonMediaPost(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendButtonMediaPost(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendButtonMediaPost(instanceKey: string, data: ButtonMessageWithMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
-        if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendButtonMediaPost.');
-        }
-        if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendButtonMediaPost.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (ApiKeyAuth) required
-        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                '*/*'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/button-media`;
-        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: data,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -305,15 +225,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendButtonsPost(instanceKey: string, data: ButtonMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendButtonsPost(instanceKey: string, data: ButtonMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendButtonsPost(instanceKey: string, data: ButtonMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendButtonsPost(instanceKey: string, data: ButtonMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendButtonMessage(instanceKey: string, data: ButtonMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendButtonMessage(instanceKey: string, data: ButtonMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendButtonMessage(instanceKey: string, data: ButtonMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendButtonMessage(instanceKey: string, data: ButtonMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendButtonsPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendButtonMessage.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendButtonsPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendButtonMessage.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -378,6 +298,86 @@ export class MessageSendingService {
     }
 
     /**
+     * Send a button message with a media header.
+     * Sends an interactive button message to the given user. This message also has media header with it. Make sure that all the button ids are unique
+     * @param instanceKey Instance key
+     * @param data Message data
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public sendButtonWithMedia(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendButtonWithMedia(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendButtonWithMedia(instanceKey: string, data: ButtonMessageWithMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendButtonWithMedia(instanceKey: string, data: ButtonMessageWithMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+        if (instanceKey === null || instanceKey === undefined) {
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendButtonWithMedia.');
+        }
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling sendButtonWithMedia.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (ApiKeyAuth) required
+        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/button-media`;
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: data,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Send a contact message.
      * Sends a contact (vcard) message to the given user.
      * @param instanceKey Instance key
@@ -385,15 +385,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendContactPost(instanceKey: string, data: ContactMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendContactPost(instanceKey: string, data: ContactMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendContactPost(instanceKey: string, data: ContactMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendContactPost(instanceKey: string, data: ContactMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendContact(instanceKey: string, data: ContactMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendContact(instanceKey: string, data: ContactMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendContact(instanceKey: string, data: ContactMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendContact(instanceKey: string, data: ContactMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendContactPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendContact.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendContactPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendContact.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -462,23 +462,23 @@ export class MessageSendingService {
      * Sends a document message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param instanceKey Instance key
      * @param to The recipient\&#39;s number
-     * @param instancesInstanceKeySendDocumentPostRequest 
+     * @param sendDocumentRequest 
      * @param caption Attached caption
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendDocumentPost(instanceKey: string, to: string, instancesInstanceKeySendDocumentPostRequest: InstancesInstanceKeySendDocumentPostRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendDocumentPost(instanceKey: string, to: string, instancesInstanceKeySendDocumentPostRequest: InstancesInstanceKeySendDocumentPostRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendDocumentPost(instanceKey: string, to: string, instancesInstanceKeySendDocumentPostRequest: InstancesInstanceKeySendDocumentPostRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendDocumentPost(instanceKey: string, to: string, instancesInstanceKeySendDocumentPostRequest: InstancesInstanceKeySendDocumentPostRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendDocument(instanceKey: string, to: string, sendDocumentRequest: SendDocumentRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendDocument(instanceKey: string, to: string, sendDocumentRequest: SendDocumentRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendDocument(instanceKey: string, to: string, sendDocumentRequest: SendDocumentRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendDocument(instanceKey: string, to: string, sendDocumentRequest: SendDocumentRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendDocumentPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendDocument.');
         }
         if (to === null || to === undefined) {
-            throw new Error('Required parameter to was null or undefined when calling instancesInstanceKeySendDocumentPost.');
+            throw new Error('Required parameter to was null or undefined when calling sendDocument.');
         }
-        if (instancesInstanceKeySendDocumentPostRequest === null || instancesInstanceKeySendDocumentPostRequest === undefined) {
-            throw new Error('Required parameter instancesInstanceKeySendDocumentPostRequest was null or undefined when calling instancesInstanceKeySendDocumentPost.');
+        if (sendDocumentRequest === null || sendDocumentRequest === undefined) {
+            throw new Error('Required parameter sendDocumentRequest was null or undefined when calling sendDocument.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -542,7 +542,7 @@ export class MessageSendingService {
         return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: instancesInstanceKeySendDocumentPostRequest,
+                body: sendDocumentRequest,
                 params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
@@ -558,23 +558,23 @@ export class MessageSendingService {
      * Sends a image message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param instanceKey Instance key
      * @param to The recipient\&#39;s number
-     * @param instancesInstanceKeySendImagePostRequest 
+     * @param sendImageRequest 
      * @param caption Attached caption
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendImagePost(instanceKey: string, to: string, instancesInstanceKeySendImagePostRequest: InstancesInstanceKeySendImagePostRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendImagePost(instanceKey: string, to: string, instancesInstanceKeySendImagePostRequest: InstancesInstanceKeySendImagePostRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendImagePost(instanceKey: string, to: string, instancesInstanceKeySendImagePostRequest: InstancesInstanceKeySendImagePostRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendImagePost(instanceKey: string, to: string, instancesInstanceKeySendImagePostRequest: InstancesInstanceKeySendImagePostRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendImagePost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendImage.');
         }
         if (to === null || to === undefined) {
-            throw new Error('Required parameter to was null or undefined when calling instancesInstanceKeySendImagePost.');
+            throw new Error('Required parameter to was null or undefined when calling sendImage.');
         }
-        if (instancesInstanceKeySendImagePostRequest === null || instancesInstanceKeySendImagePostRequest === undefined) {
-            throw new Error('Required parameter instancesInstanceKeySendImagePostRequest was null or undefined when calling instancesInstanceKeySendImagePost.');
+        if (sendImageRequest === null || sendImageRequest === undefined) {
+            throw new Error('Required parameter sendImageRequest was null or undefined when calling sendImage.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -638,7 +638,7 @@ export class MessageSendingService {
         return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: instancesInstanceKeySendImagePostRequest,
+                body: sendImageRequest,
                 params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
@@ -657,15 +657,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendListPost(instanceKey: string, data: ListMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendListPost(instanceKey: string, data: ListMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendListPost(instanceKey: string, data: ListMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendListPost(instanceKey: string, data: ListMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendListMessage(instanceKey: string, data: ListMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendListMessage(instanceKey: string, data: ListMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendListMessage(instanceKey: string, data: ListMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendListMessage(instanceKey: string, data: ListMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendListPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendListMessage.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendListPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendListMessage.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -737,15 +737,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendLocationPost(instanceKey: string, data: LocationMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendLocationPost(instanceKey: string, data: LocationMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendLocationPost(instanceKey: string, data: LocationMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendLocationPost(instanceKey: string, data: LocationMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendLocation(instanceKey: string, data: LocationMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendLocation(instanceKey: string, data: LocationMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendLocation(instanceKey: string, data: LocationMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendLocation(instanceKey: string, data: LocationMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendLocationPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendLocation.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendLocationPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendLocation.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -817,15 +817,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendMediaPost(instanceKey: string, data: SendMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendMediaPost(instanceKey: string, data: SendMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendMediaPost(instanceKey: string, data: SendMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendMediaPost(instanceKey: string, data: SendMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendMediaMessage(instanceKey: string, data: SendMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendMediaMessage(instanceKey: string, data: SendMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendMediaMessage(instanceKey: string, data: SendMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendMediaMessage(instanceKey: string, data: SendMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendMediaPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendMediaMessage.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendMediaPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendMediaMessage.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -897,15 +897,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendPollPost(instanceKey: string, data: PollMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendPollPost(instanceKey: string, data: PollMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendPollPost(instanceKey: string, data: PollMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendPollPost(instanceKey: string, data: PollMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendPollMessage(instanceKey: string, data: PollMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendPollMessage(instanceKey: string, data: PollMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendPollMessage(instanceKey: string, data: PollMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendPollMessage(instanceKey: string, data: PollMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendPollPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendPollMessage.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendPollPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendPollMessage.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -970,86 +970,6 @@ export class MessageSendingService {
     }
 
     /**
-     * Send a template message with media.
-     * Sends an interactive template message with a media header to the given user. Note: The valid button types are \&quot;replyButton\&quot;, \&quot;urlButton\&quot;, \&quot;callButton\&quot;
-     * @param instanceKey Instance key
-     * @param data Message data
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public instancesInstanceKeySendTemplateMediaPost(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendTemplateMediaPost(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendTemplateMediaPost(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendTemplateMediaPost(instanceKey: string, data: TemplateButtonWithMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
-        if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendTemplateMediaPost.');
-        }
-        if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendTemplateMediaPost.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (ApiKeyAuth) required
-        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                '*/*'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/template-media`;
-        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: data,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Send a template message.
      * Sends an interactive template message to the given user. Note: The valid button types are \&quot;replyButton\&quot;, \&quot;urlButton\&quot;, \&quot;callButton\&quot;
      * @param instanceKey Instance key
@@ -1057,15 +977,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendTemplatePost(instanceKey: string, data: TemplateButtonPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendTemplatePost(instanceKey: string, data: TemplateButtonPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendTemplatePost(instanceKey: string, data: TemplateButtonPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendTemplatePost(instanceKey: string, data: TemplateButtonPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendTemplate(instanceKey: string, data: TemplateButtonPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendTemplate(instanceKey: string, data: TemplateButtonPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendTemplate(instanceKey: string, data: TemplateButtonPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendTemplate(instanceKey: string, data: TemplateButtonPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendTemplatePost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendTemplate.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendTemplatePost.');
+            throw new Error('Required parameter data was null or undefined when calling sendTemplate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -1130,6 +1050,86 @@ export class MessageSendingService {
     }
 
     /**
+     * Send a template message with media.
+     * Sends an interactive template message with a media header to the given user. Note: The valid button types are \&quot;replyButton\&quot;, \&quot;urlButton\&quot;, \&quot;callButton\&quot;
+     * @param instanceKey Instance key
+     * @param data Message data
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public sendTemplateWithMedia(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendTemplateWithMedia(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendTemplateWithMedia(instanceKey: string, data: TemplateButtonWithMediaPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendTemplateWithMedia(instanceKey: string, data: TemplateButtonWithMediaPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+        if (instanceKey === null || instanceKey === undefined) {
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendTemplateWithMedia.');
+        }
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling sendTemplateWithMedia.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (ApiKeyAuth) required
+        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/template-media`;
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: data,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Send a text message.
      * Sends a text message to the given user.
      * @param instanceKey Instance key
@@ -1137,15 +1137,15 @@ export class MessageSendingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendTextPost(instanceKey: string, data: TextMessage, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendTextPost(instanceKey: string, data: TextMessage, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendTextPost(instanceKey: string, data: TextMessage, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendTextPost(instanceKey: string, data: TextMessage, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendTextMessage(instanceKey: string, data: TextMessage, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendTextMessage(instanceKey: string, data: TextMessage, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendTextMessage(instanceKey: string, data: TextMessage, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendTextMessage(instanceKey: string, data: TextMessage, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendTextPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendTextMessage.');
         }
         if (data === null || data === undefined) {
-            throw new Error('Required parameter data was null or undefined when calling instancesInstanceKeySendTextPost.');
+            throw new Error('Required parameter data was null or undefined when calling sendTextMessage.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -1210,118 +1210,27 @@ export class MessageSendingService {
     }
 
     /**
-     * Upload media.
-     * Uploads media to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
-     * @param instanceKey Instance key
-     * @param type Media type
-     * @param instancesInstanceKeySendUploadPostRequest 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public instancesInstanceKeySendUploadPost(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', instancesInstanceKeySendUploadPostRequest: InstancesInstanceKeySendUploadPostRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendUploadPost(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', instancesInstanceKeySendUploadPostRequest: InstancesInstanceKeySendUploadPostRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendUploadPost(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', instancesInstanceKeySendUploadPostRequest: InstancesInstanceKeySendUploadPostRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendUploadPost(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', instancesInstanceKeySendUploadPostRequest: InstancesInstanceKeySendUploadPostRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
-        if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendUploadPost.');
-        }
-        if (type === null || type === undefined) {
-            throw new Error('Required parameter type was null or undefined when calling instancesInstanceKeySendUploadPost.');
-        }
-        if (instancesInstanceKeySendUploadPostRequest === null || instancesInstanceKeySendUploadPostRequest === undefined) {
-            throw new Error('Required parameter instancesInstanceKeySendUploadPostRequest was null or undefined when calling instancesInstanceKeySendUploadPost.');
-        }
-
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (type !== undefined && type !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>type, 'type');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (ApiKeyAuth) required
-        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                '*/*'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/upload`;
-        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: instancesInstanceKeySendUploadPostRequest,
-                params: localVarQueryParameters,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Send raw video.
      * Sends a video message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param instanceKey Instance key
      * @param to The recipient\&#39;s number
-     * @param instancesInstanceKeySendVideoPostRequest 
+     * @param sendVideoRequest 
      * @param caption Attached caption
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeySendVideoPost(instanceKey: string, to: string, instancesInstanceKeySendVideoPostRequest: InstancesInstanceKeySendVideoPostRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public instancesInstanceKeySendVideoPost(instanceKey: string, to: string, instancesInstanceKeySendVideoPostRequest: InstancesInstanceKeySendVideoPostRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public instancesInstanceKeySendVideoPost(instanceKey: string, to: string, instancesInstanceKeySendVideoPostRequest: InstancesInstanceKeySendVideoPostRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public instancesInstanceKeySendVideoPost(instanceKey: string, to: string, instancesInstanceKeySendVideoPostRequest: InstancesInstanceKeySendVideoPostRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendVideo(instanceKey: string, to: string, sendVideoRequest: SendVideoRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendVideo(instanceKey: string, to: string, sendVideoRequest: SendVideoRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendVideo(instanceKey: string, to: string, sendVideoRequest: SendVideoRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendVideo(instanceKey: string, to: string, sendVideoRequest: SendVideoRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
-            throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeySendVideoPost.');
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendVideo.');
         }
         if (to === null || to === undefined) {
-            throw new Error('Required parameter to was null or undefined when calling instancesInstanceKeySendVideoPost.');
+            throw new Error('Required parameter to was null or undefined when calling sendVideo.');
         }
-        if (instancesInstanceKeySendVideoPostRequest === null || instancesInstanceKeySendVideoPostRequest === undefined) {
-            throw new Error('Required parameter instancesInstanceKeySendVideoPostRequest was null or undefined when calling instancesInstanceKeySendVideoPost.');
+        if (sendVideoRequest === null || sendVideoRequest === undefined) {
+            throw new Error('Required parameter sendVideoRequest was null or undefined when calling sendVideo.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -1385,7 +1294,98 @@ export class MessageSendingService {
         return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: instancesInstanceKeySendVideoPostRequest,
+                body: sendVideoRequest,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Upload media.
+     * Uploads media to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
+     * @param instanceKey Instance key
+     * @param type Media type
+     * @param uploadMediaRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public uploadMedia(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', uploadMediaRequest: UploadMediaRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public uploadMedia(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', uploadMediaRequest: UploadMediaRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public uploadMedia(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', uploadMediaRequest: UploadMediaRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public uploadMedia(instanceKey: string, type: 'image' | 'video' | 'audio' | 'document', uploadMediaRequest: UploadMediaRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+        if (instanceKey === null || instanceKey === undefined) {
+            throw new Error('Required parameter instanceKey was null or undefined when calling uploadMedia.');
+        }
+        if (type === null || type === undefined) {
+            throw new Error('Required parameter type was null or undefined when calling uploadMedia.');
+        }
+        if (uploadMediaRequest === null || uploadMediaRequest === undefined) {
+            throw new Error('Required parameter uploadMediaRequest was null or undefined when calling uploadMedia.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (type !== undefined && type !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>type, 'type');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (ApiKeyAuth) required
+        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/upload`;
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: uploadMediaRequest,
                 params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
