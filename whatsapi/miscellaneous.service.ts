@@ -19,9 +19,9 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { MainAPIResponse } from '../models/mainAPIResponse';
+import { APIResponse } from '../models/aPIResponse';
 // @ts-ignore
-import { StructsUserInfoPayload } from '../models/structsUserInfoPayload';
+import { UserInfoPayload } from '../models/userInfoPayload';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -101,9 +101,9 @@ export class MiscellaneousService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyMiscProfilePicGet(instanceKey: string, jid: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyMiscProfilePicGet.');
@@ -157,7 +157,7 @@ export class MiscellaneousService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/misc/profile-pic`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -178,10 +178,10 @@ export class MiscellaneousService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: StructsUserInfoPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: StructsUserInfoPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: StructsUserInfoPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: StructsUserInfoPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyMiscUserInfoPost(instanceKey: string, data: UserInfoPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyMiscUserInfoPost.');
         }
@@ -237,7 +237,7 @@ export class MiscellaneousService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/misc/user-info`;
-        return this.httpClient.request<MainAPIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,

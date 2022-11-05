@@ -19,9 +19,9 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { MainAPIResponse } from '../models/mainAPIResponse';
+import { APIResponse } from '../models/aPIResponse';
 // @ts-ignore
-import { StructsWebhookPayload } from '../models/structsWebhookPayload';
+import { WebhookPayload } from '../models/webhookPayload';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -100,9 +100,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesCreateGet(instanceKey?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesCreateGet(instanceKey?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesCreateGet(instanceKey?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesCreateGet(instanceKey?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesCreateGet(instanceKey?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesCreateGet(instanceKey?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesCreateGet(instanceKey?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -150,7 +150,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/create`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -170,9 +170,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyContactsGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyContactsGet(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyContactsGet.');
@@ -217,7 +217,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/contacts`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -236,9 +236,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyDeleteDelete(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyDeleteDelete(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyDeleteDelete.');
@@ -283,7 +283,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/delete`;
-        return this.httpClient.request<MainAPIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -302,9 +302,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGet(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGet.');
@@ -349,7 +349,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -368,9 +368,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyLogoutDelete(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyLogoutDelete(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyLogoutDelete.');
@@ -415,7 +415,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/logout`;
-        return this.httpClient.request<MainAPIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -434,9 +434,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyQrcodeGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyQrcodeGet(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyQrcodeGet.');
@@ -481,7 +481,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/qrcode`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -501,10 +501,10 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyWebhookPut(instanceKey: string, data: StructsWebhookPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyWebhookPut(instanceKey: string, data: StructsWebhookPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyWebhookPut(instanceKey: string, data: StructsWebhookPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyWebhookPut(instanceKey: string, data: StructsWebhookPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyWebhookPut(instanceKey: string, data: WebhookPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyWebhookPut(instanceKey: string, data: WebhookPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyWebhookPut(instanceKey: string, data: WebhookPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyWebhookPut(instanceKey: string, data: WebhookPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyWebhookPut.');
         }
@@ -560,7 +560,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/webhook`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -579,9 +579,9 @@ export class InstanceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesListGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesListGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesListGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesListGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesListGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesListGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesListGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -623,7 +623,7 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/list`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

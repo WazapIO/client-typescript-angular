@@ -19,17 +19,17 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { APIResponse } from '../models/aPIResponse';
+// @ts-ignore
+import { GroupCreatePayload } from '../models/groupCreatePayload';
+// @ts-ignore
+import { GroupUpdateDescriptionPayload } from '../models/groupUpdateDescriptionPayload';
+// @ts-ignore
+import { GroupUpdateNamePayload } from '../models/groupUpdateNamePayload';
+// @ts-ignore
+import { GroupUpdateParticipantsPayload } from '../models/groupUpdateParticipantsPayload';
+// @ts-ignore
 import { InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest } from '../models/instancesInstanceKeyGroupsGroupIdProfilePicPutRequest';
-// @ts-ignore
-import { MainAPIResponse } from '../models/mainAPIResponse';
-// @ts-ignore
-import { StructsGroupCreatePayload } from '../models/structsGroupCreatePayload';
-// @ts-ignore
-import { StructsGroupUpdateDescriptionPayload } from '../models/structsGroupUpdateDescriptionPayload';
-// @ts-ignore
-import { StructsGroupUpdateNamePayload } from '../models/structsGroupUpdateNamePayload';
-// @ts-ignore
-import { StructsGroupUpdateParticipantsPayload } from '../models/structsGroupUpdateParticipantsPayload';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -108,9 +108,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsAdminGet(instanceKey: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsAdminGet.');
@@ -155,7 +155,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/admin`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -175,10 +175,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: StructsGroupCreatePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: StructsGroupCreatePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: StructsGroupCreatePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: StructsGroupCreatePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: GroupCreatePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: GroupCreatePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: GroupCreatePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsCreatePost(instanceKey: string, data: GroupCreatePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsCreatePost.');
         }
@@ -234,7 +234,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/create`;
-        return this.httpClient.request<MainAPIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -255,9 +255,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGet(instanceKey: string, includeParticipants?: 'false' | 'true', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGet.');
@@ -308,7 +308,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -330,9 +330,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey: string, announce: boolean, groupId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdAnnouncePut.');
@@ -383,7 +383,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/announce`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -403,9 +403,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdDelete(instanceKey: string, groupId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdDelete.');
@@ -453,7 +453,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/`;
-        return this.httpClient.request<MainAPIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -474,10 +474,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: StructsGroupUpdateDescriptionPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: StructsGroupUpdateDescriptionPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: StructsGroupUpdateDescriptionPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: StructsGroupUpdateDescriptionPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: GroupUpdateDescriptionPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: GroupUpdateDescriptionPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: GroupUpdateDescriptionPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey: string, groupId: string, data: GroupUpdateDescriptionPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdDescriptionPut.');
         }
@@ -536,7 +536,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/description`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -557,9 +557,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdGet(instanceKey: string, groupId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdGet.');
@@ -607,7 +607,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -627,9 +627,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey: string, groupId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdInviteCodeGet.');
@@ -677,7 +677,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invite-code`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -698,9 +698,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdLockPut(instanceKey: string, locked: boolean, groupId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdLockPut.');
@@ -751,7 +751,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lock`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -772,10 +772,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: StructsGroupUpdateNamePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: StructsGroupUpdateNamePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: StructsGroupUpdateNamePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: StructsGroupUpdateNamePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: GroupUpdateNamePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: GroupUpdateNamePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: GroupUpdateNamePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdNamePut(instanceKey: string, groupId: string, data: GroupUpdateNamePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdNamePut.');
         }
@@ -834,7 +834,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/name`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -856,10 +856,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdParticipantsAddPost.');
         }
@@ -918,7 +918,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/participants/add`;
-        return this.httpClient.request<MainAPIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -940,10 +940,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdParticipantsDemotePut.');
         }
@@ -1002,7 +1002,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/participants/demote`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -1024,10 +1024,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdParticipantsPromotePut.');
         }
@@ -1086,7 +1086,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/participants/promote`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -1108,10 +1108,10 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: StructsGroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey: string, groupId: string, data: GroupUpdateParticipantsPayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete.');
         }
@@ -1170,7 +1170,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/participants/remove`;
-        return this.httpClient.request<MainAPIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: data,
@@ -1192,9 +1192,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey: string, groupId: string, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest: InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsGroupIdProfilePicPut.');
@@ -1254,7 +1254,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/${this.configuration.encodeParam({name: "groupId", value: groupId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/profile-pic`;
-        return this.httpClient.request<MainAPIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: instancesInstanceKeyGroupsGroupIdProfilePicPutRequest,
@@ -1275,9 +1275,9 @@ export class GroupManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<MainAPIResponse>;
-    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<MainAPIResponse>>;
-    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<MainAPIResponse>>;
+    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
     public instancesInstanceKeyGroupsInviteInfoGet(instanceKey: string, inviteLink: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling instancesInstanceKeyGroupsInviteInfoGet.');
@@ -1331,7 +1331,7 @@ export class GroupManagementService {
         }
 
         let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/groups/invite-info`;
-        return this.httpClient.request<MainAPIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

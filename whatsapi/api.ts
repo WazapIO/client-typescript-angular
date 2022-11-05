@@ -1,3 +1,5 @@
+export * from './businessManagement.service';
+import { BusinessManagementService } from './businessManagement.service';
 export * from './groupManagement.service';
 import { GroupManagementService } from './groupManagement.service';
 export * from './instance.service';
@@ -6,4 +8,4 @@ export * from './messageSending.service';
 import { MessageSendingService } from './messageSending.service';
 export * from './miscellaneous.service';
 import { MiscellaneousService } from './miscellaneous.service';
-export const APIS = [GroupManagementService, InstanceService, MessageSendingService, MiscellaneousService];
+export const APIS = [BusinessManagementService, GroupManagementService, InstanceService, MessageSendingService, MiscellaneousService];

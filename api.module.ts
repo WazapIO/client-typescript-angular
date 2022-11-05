@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { BusinessManagementService } from './whatsapi/businessManagement.service';
 import { GroupManagementService } from './whatsapi/groupManagement.service';
 import { InstanceService } from './whatsapi/instance.service';
 import { MessageSendingService } from './whatsapi/messageSending.service';
