@@ -27,6 +27,8 @@ import { ButtonMessageWithMediaPayload } from '../models/buttonMessageWithMediaP
 // @ts-ignore
 import { ContactMessagePayload } from '../models/contactMessagePayload';
 // @ts-ignore
+import { GroupInviteMessagePayload } from '../models/groupInviteMessagePayload';
+// @ts-ignore
 import { ListMessagePayload } from '../models/listMessagePayload';
 // @ts-ignore
 import { LocationMessagePayload } from '../models/locationMessagePayload';
@@ -37,8 +39,6 @@ import { SendAudioRequest } from '../models/sendAudioRequest';
 // @ts-ignore
 import { SendDocumentRequest } from '../models/sendDocumentRequest';
 // @ts-ignore
-import { SendImageRequest } from '../models/sendImageRequest';
-// @ts-ignore
 import { SendMediaPayload } from '../models/sendMediaPayload';
 // @ts-ignore
 import { SendVideoRequest } from '../models/sendVideoRequest';
@@ -48,6 +48,8 @@ import { TemplateButtonPayload } from '../models/templateButtonPayload';
 import { TemplateButtonWithMediaPayload } from '../models/templateButtonWithMediaPayload';
 // @ts-ignore
 import { TextMessage } from '../models/textMessage';
+// @ts-ignore
+import { UpdateProfilePicRequest } from '../models/updateProfilePicRequest';
 // @ts-ignore
 import { UploadMediaRequest } from '../models/uploadMediaRequest';
 
@@ -554,27 +556,107 @@ export class MessageSendingService {
     }
 
     /**
+     * Send a group invite message
+     * Sends a group invite message to the specified number. Don\&#39;t include \&quot;https://chat.whatsapp.com/\&quot; in the invite code.
+     * @param instanceKey Instance key
+     * @param data Message data
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public sendGroupInvite(instanceKey: string, data: GroupInviteMessagePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendGroupInvite(instanceKey: string, data: GroupInviteMessagePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendGroupInvite(instanceKey: string, data: GroupInviteMessagePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendGroupInvite(instanceKey: string, data: GroupInviteMessagePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+        if (instanceKey === null || instanceKey === undefined) {
+            throw new Error('Required parameter instanceKey was null or undefined when calling sendGroupInvite.');
+        }
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling sendGroupInvite.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (ApiKeyAuth) required
+        localVarCredential = this.configuration.lookupCredential('ApiKeyAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/instances/${this.configuration.encodeParam({name: "instanceKey", value: instanceKey, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/send/group-invite`;
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: data,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Send raw image.
      * Sends a image message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param instanceKey Instance key
      * @param to The recipient\&#39;s number
-     * @param sendImageRequest 
+     * @param updateProfilePicRequest 
      * @param caption Attached caption
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public sendImage(instanceKey: string, to: string, sendImageRequest: SendImageRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+    public sendImage(instanceKey: string, to: string, updateProfilePicRequest: UpdateProfilePicRequest, caption?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public sendImage(instanceKey: string, to: string, updateProfilePicRequest: UpdateProfilePicRequest, caption?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public sendImage(instanceKey: string, to: string, updateProfilePicRequest: UpdateProfilePicRequest, caption?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public sendImage(instanceKey: string, to: string, updateProfilePicRequest: UpdateProfilePicRequest, caption?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (instanceKey === null || instanceKey === undefined) {
             throw new Error('Required parameter instanceKey was null or undefined when calling sendImage.');
         }
         if (to === null || to === undefined) {
             throw new Error('Required parameter to was null or undefined when calling sendImage.');
         }
-        if (sendImageRequest === null || sendImageRequest === undefined) {
-            throw new Error('Required parameter sendImageRequest was null or undefined when calling sendImage.');
+        if (updateProfilePicRequest === null || updateProfilePicRequest === undefined) {
+            throw new Error('Required parameter updateProfilePicRequest was null or undefined when calling sendImage.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -638,7 +720,7 @@ export class MessageSendingService {
         return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: sendImageRequest,
+                body: updateProfilePicRequest,
                 params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
