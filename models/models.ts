@@ -28,5 +28,6 @@ export * from './templateButtonWithMediaPayload';
 export * from './textMessage';
 export * from './updateProfilePicRequest';
 export * from './uploadMediaRequest';
+export * from './urlMediaUploadPayload';
 export * from './userInfoPayload';
 export * from './webhookPayload';

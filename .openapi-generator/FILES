@@ -36,6 +36,7 @@ models/templateButtonWithMediaPayload.ts
 models/textMessage.ts
 models/updateProfilePicRequest.ts
 models/uploadMediaRequest.ts
+models/urlMediaUploadPayload.ts
 models/userInfoPayload.ts
 models/webhookPayload.ts
 param.ts
