@@ -3,6 +3,7 @@ export * from './buttonMessagePayload';
 export * from './buttonMessageWithMediaPayload';
 export * from './contactMessagePayload';
 export * from './contactMessagePayloadVcard';
+export * from './createInstancePayload';
 export * from './fileUpload';
 export * from './groupCreatePayload';
 export * from './groupInviteMessagePayload';

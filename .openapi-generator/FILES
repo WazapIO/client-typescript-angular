@@ -10,6 +10,7 @@ models/buttonMessagePayload.ts
 models/buttonMessageWithMediaPayload.ts
 models/contactMessagePayload.ts
 models/contactMessagePayloadVcard.ts
+models/createInstancePayload.ts
 models/fileUpload.ts
 models/groupCreatePayload.ts
 models/groupInviteMessagePayload.ts

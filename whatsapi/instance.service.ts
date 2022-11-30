@@ -21,6 +21,8 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { APIResponse } from '../models/aPIResponse';
 // @ts-ignore
+import { CreateInstancePayload } from '../models/createInstancePayload';
+// @ts-ignore
 import { WebhookPayload } from '../models/webhookPayload';
 
 // @ts-ignore
@@ -176,19 +178,16 @@ export class InstanceService {
     /**
      * Creates a new instance key.
      * This endpoint is used to create a new WhatsApp Web instance.
-     * @param instanceKey Insert instance key if you want to provide custom key
+     * @param data Instance data
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createInstance(instanceKey?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
-    public createInstance(instanceKey?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
-    public createInstance(instanceKey?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
-    public createInstance(instanceKey?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
-
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (instanceKey !== undefined && instanceKey !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>instanceKey, 'instance_key');
+    public createInstance(data: CreateInstancePayload, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<APIResponse>;
+    public createInstance(data: CreateInstancePayload, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<APIResponse>>;
+    public createInstance(data: CreateInstancePayload, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<APIResponse>>;
+    public createInstance(data: CreateInstancePayload, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling createInstance.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -218,6 +217,15 @@ export class InstanceService {
         }
 
 
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
         let responseType_: 'text' | 'json' | 'blob' = 'json';
         if (localVarHttpHeaderAcceptSelected) {
             if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -230,10 +238,10 @@ export class InstanceService {
         }
 
         let localVarPath = `/instances/create`;
-        return this.httpClient.request<APIResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<APIResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                body: data,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
